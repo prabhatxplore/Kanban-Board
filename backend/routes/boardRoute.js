@@ -1,11 +1,20 @@
 const express = require("express");
+const {
+  createBoardController,
+  editBoardController,
+  deleteBoardController,
+  addMembersController,
+  removeMemebersController,
+} = require("../controllers/boardController");
 const boardRouter = express.Router();
 
-// boardRouter.get("/", getBoardController);
+boardRouter.post("/create-board", createBoardController);
+boardRouter.post("/:BoardId/edit-board", editBoardController);
 
-// boardRouter.post("/createBoard", createBoardController);
-// boardRouter.delete("/:boardId/deleteBoard", deleteBoardController);
+boardRouter.delete("/:BoardId/delete-board", deleteBoardController);
 
-// boardRouter.patch("/:boardId/update", updateBoardController);
-// boardRouter.patch("/:boardId/addMember", addBoardMemberController);
-// boardRouter.patch("/:boardId/deleteMember", deleteBoardMemberController);
+boardRouter.post("/:BoardId/add-member", addMembersController);
+
+boardRouter.delete("/:BoardId/remove-member", removeMemebersController);
+
+module.exports = boardRouter;
