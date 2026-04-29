@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   await mongoose
-    .connect("mongodb://localhost:27017/Kanban")
+    .connect(process.env.MONGO_URL)
     .then(() => console.log("MongoDB connected success"))
     .catch((err) => console.log(err));
 };

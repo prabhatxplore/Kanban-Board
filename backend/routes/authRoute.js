@@ -3,15 +3,16 @@ const {
   signupController,
   loginController,
   logoutController,
-  checkUserSessionController,
+  getUserDetailController,
 } = require("../controllers/authController");
+const { checkAuth } = require("../middlewares/checkAuth");
 const authRoute = express.Router();
 
 authRoute.post("/signup", signupController);
 authRoute.post("/login", loginController);
 
-authRoute.post("/logout", logoutController);
+authRoute.post("/logout", checkAuth, logoutController);
 
-authRoute.post("/check-user-session", checkUserSessionController);
+authRoute.get("/user-detail", checkAuth, getUserDetailController);
 
 module.exports = authRoute;
