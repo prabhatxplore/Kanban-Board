@@ -1,5 +1,27 @@
 const Board = require("../models/Board");
 
+exports.getMyBoardController = async (req, res) => {
+  try {
+    const userId = req.session.user._id;
+
+    const boards = await Board.find({
+      $or: [{ owner: userId }, { memebers: userId }],
+    });
+
+    if (boards.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "No board found for this user" });
+    }
+    return res.status(200).json({ success: true, message: "Found", boards });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error---------------------",
+    });
+  }
+};
+
 exports.createBoardController = async (req, res) => {
   // owner is added from the session by checking user login state
   try {

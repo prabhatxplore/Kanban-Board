@@ -5,8 +5,11 @@ const {
   deleteBoardController,
   addMembersController,
   removeMemebersController,
+  getMyBoardController,
 } = require("../controllers/boardController");
 const boardRouter = express.Router();
+
+boardRouter.get("/get-my-board", getMyBoardController);
 
 boardRouter.post("/create-board", createBoardController);
 boardRouter.post("/:BoardId/edit-board", editBoardController);

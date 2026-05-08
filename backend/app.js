@@ -6,6 +6,8 @@ const boardRouter = require("./routes/boardRoute");
 const app = express();
 const MongoStore = require("connect-mongo").default;
 const session = require("express-session");
+const sectionRoute = require("./routes/sectionRoute");
+const cardRoute = require("./routes/cardRoute");
 
 app.use(
   session({
@@ -24,8 +26,10 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api", authRoute);
+app.use("/api/auth", authRoute);
 app.use("/api/board", boardRouter);
+app.use("/api/card", cardRoute);
+app.use("/api/section", sectionRoute);
 
 connectDB();
 app.listen(3000, () => {
