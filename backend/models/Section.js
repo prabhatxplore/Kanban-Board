@@ -1,4 +1,4 @@
-const mongoose = requrie("mongoose");
+const mongoose = require("mongoose");
 
 const SectionSchema = new mongoose.Schema({
   title: { type: String, required: true },

@@ -5,9 +5,9 @@ const {
   removeSectionController,
 } = require("../controllers/sectionController");
 
-const express = requrie("express");
+const express = require("express");
 
-const sectionRoute = express.Route();
+const sectionRoute = express.Router();
 
 sectionRoute.post("/create-section", createSectionController);
 sectionRoute.post("/reorder-section", reorderSectionController);

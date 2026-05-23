@@ -1,4 +1,4 @@
-const mongoose = requrie("mongoose");
+const mongoose = require("mongoose");
 
 const CardSchema = mongoose.Schema({
   title: { type: String, required: true },

@@ -5,9 +5,9 @@ const {
   deleteCardController,
 } = require("../controllers/cardController");
 
-const express = requrie("express");
+const express = require("express");
 
-const cardRoute = express.Route();
+const cardRoute = express.Router();
 
 cardRoute.post("/create-card", createCardController);
 

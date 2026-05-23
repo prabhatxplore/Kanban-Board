@@ -101,7 +101,7 @@ exports.editCardController = async (req, res) => {
   }
 };
 
-expots.deleteCardController = async (req, res) => {
+exports.deleteCardController = async (req, res) => {
   try {
     const { cardId } = req.params;
 

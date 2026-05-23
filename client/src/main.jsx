@@ -1,11 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import Home from "../pages/Home";
+import DeskLayout from "../layout/DeskLayout";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <>
-    <h1>this is the kanban</h1>
-    </>
+    <DeskLayout />
   </StrictMode>,
-)
+);
