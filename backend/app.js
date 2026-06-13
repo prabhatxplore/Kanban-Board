@@ -8,6 +8,12 @@ const MongoStore = require("connect-mongo").default;
 const session = require("express-session");
 const sectionRoute = require("./routes/sectionRoute");
 const cardRoute = require("./routes/cardRoute");
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
 
 app.use(
   session({

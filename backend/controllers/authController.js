@@ -31,6 +31,7 @@ exports.signupController = async (req, res) => {
 };
 
 exports.loginController = async (req, res) => {
+  console.log("is this working");
   try {
     if (req.session.user) {
       {
@@ -39,21 +40,34 @@ exports.loginController = async (req, res) => {
         });
       }
     }
+    console.log("This is the second phase");
     const { email, password } = req.body;
+    console.log("Email: ", email);
+    console.log("Password: ", password);
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const user = await User.findOne({ email: email });
-    const isMatch = await bcrypt.compare(password, hashedPassword);
-    if (isMatch) {
-      req.session.user = {
-        _id: user._id,
-      };
-      await req.session.save();
+    console.log("is there a user", null);
+    if (user) {
+      const isMatch = await bcrypt.compare(user.password, hashedPassword);
+      if (isMatch) {
+        req.session.user = {
+          _id: user._id,
+        };
+        await req.session.save();
 
-      res.status(201).json({
-        success: true,
-        message: "Successsfully Logged in",
-      });
+        res.status(201).json({
+          success: true,
+          message: "Successsfully Logged in",
+        });
+      }
+    } else {
+      return res
+        .status(401)
+        .json({
+          success: false,
+          message: "Please Enter correct email and password",
+        });
     }
   } catch (err) {
     res.status(500).json({
