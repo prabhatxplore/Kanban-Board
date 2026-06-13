@@ -1,11 +1,12 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import Login from "../pages/Login";
+import Signup from "../pages/Signup";
 
 function DeskLayout() {
   return (
     <div className="h-screen w-screen">
-      <Login />
+      <Signup/>
       {/* <div className="leftsection bg-red-300 flex-1">
         <Sidebar />
       </div>
